@@ -1,15 +1,15 @@
-import { Sequelize } from 'sequelize-typescript';
+import { Sequelize, SequelizeOptions } from 'sequelize-typescript';
 
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
-import { User } from '../../modules/users/user.entity';
-import { Post } from '../../modules/posts/post.entity';
+import { User } from '../../modules/users/model/user.model';
+import { Post } from '../../modules/posts/model/post.model';
 
 export const databaseProviders = [
     {
         provide: SEQUELIZE,
         useFactory: async () => {
-            let config;
+            let config: SequelizeOptions;
             switch (process.env.NODE_ENV) {
                 case DEVELOPMENT:
                     config = databaseConfig.development;
