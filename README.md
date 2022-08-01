@@ -1,6 +1,13 @@
+## Deploy URL
+https://boiling-shore-56708.herokuapp.com/
+
 ## Openapi DOC:
 
-/api/v1/docs
+https://boiling-shore-56708.herokuapp.com/api/v1/docs
+
+## POSTMAN Doc with saved examples
+
+https://www.getpostman.com/collections/506eb2a5de7074d1e773
 
 ## Description
 
