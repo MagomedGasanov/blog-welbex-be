@@ -20,8 +20,7 @@ export const databaseConfig = {
         dialect: 'postgres',
     },
     production: {
-        use_env_variable:
-            'postgres://jxmyhuuacachds:bf78c1bbf3891e41e3424fd0ab843df2c2d406583c76fa7142a587108727a388@ec2-44-193-178-122.compute-1.amazonaws.com:5432/d89bklbvl7h6pe',
+        use_env_variable: process.env.DATABASE_URL,
         dialect: 'postgres',
         protocol: 'postgres',
         dialectOptions: {
