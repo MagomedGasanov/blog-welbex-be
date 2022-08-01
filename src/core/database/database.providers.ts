@@ -1,4 +1,4 @@
-import { Sequelize, SequelizeOptions } from 'sequelize-typescript';
+import { Sequelize } from 'sequelize-typescript';
 
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
@@ -10,7 +10,7 @@ export const databaseProviders = [
     {
         provide: SEQUELIZE,
         useFactory: async () => {
-            let config: SequelizeOptions;
+            let config;
             switch (process.env.NODE_ENV) {
                 case DEVELOPMENT:
                     config = databaseConfig.development;

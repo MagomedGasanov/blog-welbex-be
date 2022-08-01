@@ -23,7 +23,10 @@ services:
     env_file:
       - .env
     environment:
-      PG_DATA: /var/lib/postgresql/data
+      - PG_DATA=/var/lib/postgresql/data
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=root
     ports:
       - 5432:5432
     volumes:
