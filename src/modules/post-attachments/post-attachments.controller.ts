@@ -8,6 +8,7 @@ import {
     Param,
     Delete,
     Get,
+    Query,
 } from '@nestjs/common';
 
 import { AuthGuard } from '@nestjs/passport';
@@ -33,9 +34,14 @@ export class PostAttachmentsController {
     }
 
     @UseGuards(AuthGuard('jwt'))
-    @Get('image:key')
-    async getImage(@Param('key') key: string) {
-        return this.postAttachmentsService.getImage(key);
+    @Get(':key')
+    async getImage(
+        @Param('key') key: string,
+        @Query('type') type: 'video' | 'image',
+    ) {
+        if (type === 'image') {
+            return this.postAttachmentsService.getImage(key);
+        }
     }
 
     @UseGuards(AuthGuard('jwt'))
