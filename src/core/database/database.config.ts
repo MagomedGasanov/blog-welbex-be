@@ -1,12 +1,8 @@
 import * as dotenv from 'dotenv';
-import { SequelizeOptions } from 'sequelize-typescript';
 
 dotenv.config();
 
-export const databaseConfig: Record<
-    'development' | 'test' | 'production',
-    SequelizeOptions
-> = {
+export const databaseConfig = {
     development: {
         username: process.env.DB_USER,
         password: process.env.DB_PASS,
@@ -24,10 +20,14 @@ export const databaseConfig: Record<
         dialect: 'postgres',
     },
     production: {
-        username: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.DB_NAME_PRODUCTION,
-        host: process.env.DB_HOST,
+        use_env_variable: process.env.DATABASE_URL,
         dialect: 'postgres',
+        protocol: 'postgres',
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false,
+            },
+        },
     },
 };
