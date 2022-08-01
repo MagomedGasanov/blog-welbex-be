@@ -21,7 +21,7 @@ export const databaseConfig = {
     },
     production: {
         use_env_variable:
-            'postgres://umfavwsjrevjgo:1cbe4cfcd355d74c7b3bd16b537c910d910c5dc2fbe86760de8477ac1557a67f@ec2-107-22-122-106.compute-1.amazonaws.com:5432/d91pfq3b46ndmv',
+            'postgres://jxmyhuuacachds:bf78c1bbf3891e41e3424fd0ab843df2c2d406583c76fa7142a587108727a388@ec2-44-193-178-122.compute-1.amazonaws.com:5432/d89bklbvl7h6pe',
         dialect: 'postgres',
         protocol: 'postgres',
         dialectOptions: {
