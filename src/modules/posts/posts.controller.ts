@@ -9,6 +9,7 @@ import {
     NotFoundException,
     UseGuards,
     Request,
+    Query,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 

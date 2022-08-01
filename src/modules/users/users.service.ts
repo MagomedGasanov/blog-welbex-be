@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 
 import { User as UserModel } from './model/user.model';
+import { Post as PostModel } from '../posts/model/post.model';
 import { USER_REPOSITORY } from '../../core/constants';
 import { CreateUserType } from './types/user.type';
 
@@ -21,7 +22,10 @@ export class UsersService {
         });
     }
 
-    async findOneById(id: number): Promise<UserModel> {
-        return await this.userRepository.findOne<UserModel>({ where: { id } });
+    async findOneById(id: string): Promise<UserModel> {
+        return await this.userRepository.findOne<UserModel>({
+            where: { id },
+            include: [{ model: PostModel }],
+        });
     }
 }

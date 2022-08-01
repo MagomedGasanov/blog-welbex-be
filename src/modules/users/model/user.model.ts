@@ -1,4 +1,5 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, HasMany } from 'sequelize-typescript';
+import { Post } from 'src/modules/posts/model/post.model';
 
 @Table
 export class User extends Model<User> {
@@ -35,4 +36,7 @@ export class User extends Model<User> {
         allowNull: false,
     })
     id: string;
+
+    @HasMany(() => Post)
+    posts: Post[];
 }

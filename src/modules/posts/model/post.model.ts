@@ -5,7 +5,9 @@ import {
     DataType,
     ForeignKey,
     BelongsTo,
+    HasMany,
 } from 'sequelize-typescript';
+import { PostAttachment } from 'src/modules/post-attachments/model/post-attachment.model';
 
 import { User as UserModel } from '../../users/model/user.model';
 
@@ -34,4 +36,7 @@ export class Post extends Model<Post> {
         allowNull: false,
     })
     id: string;
+
+    @HasMany(() => PostAttachment)
+    attachments: PostAttachment[];
 }

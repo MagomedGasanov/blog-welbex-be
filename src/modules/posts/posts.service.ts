@@ -6,6 +6,7 @@ import { Post as PostModel } from './model/post.model';
 import { PostDto } from './dto/post.dto';
 import { User as UserModel } from '../users/model/user.model';
 import { POST_REPOSITORY } from '../../core/constants';
+import { PostAttachment } from '../post-attachments/model/post-attachment.model';
 
 @Injectable()
 export class PostsService {
@@ -27,6 +28,7 @@ export class PostsService {
         return await this.postRepository.findAll<PostModel>({
             include: [
                 { model: UserModel, attributes: { exclude: ['password'] } },
+                { model: PostAttachment },
             ],
         });
     }
@@ -36,6 +38,7 @@ export class PostsService {
             where: { id },
             include: [
                 { model: UserModel, attributes: { exclude: ['password'] } },
+                { model: PostAttachment },
             ],
         });
     }
