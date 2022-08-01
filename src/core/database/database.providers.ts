@@ -24,7 +24,14 @@ export const databaseProviders = [
                 default:
                     config = databaseConfig.development;
             }
-            const sequelize = new Sequelize(config);
+            const sequelize = new Sequelize(process.env.DATABASE_URL, {
+                dialectOptions: {
+                    ssl: {
+                        require: true,
+                        rejectUnauthorized: false,
+                    },
+                },
+            });
             sequelize.addModels([User, Post, PostAttachment]);
             await sequelize.sync();
             return sequelize;
