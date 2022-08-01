@@ -27,6 +27,10 @@ export class PostAttachmentsService {
         );
     }
 
+    async getImage(key: string) {
+        return this.fileService.getFile(key, 'images');
+    }
+
     async saveVideo(video: Express.Multer.File, postId: string) {
         const originalName = video.originalname;
         const fileExtension = this.getExtension(originalName);

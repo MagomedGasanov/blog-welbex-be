@@ -7,6 +7,7 @@ import {
     UploadedFile,
     Param,
     Delete,
+    Get,
 } from '@nestjs/common';
 
 import { AuthGuard } from '@nestjs/passport';
@@ -29,6 +30,12 @@ export class PostAttachmentsController {
         @UploadedFile() image: Express.Multer.File,
     ) {
         return this.postAttachmentsService.saveImage(image, body.postId);
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Get('image:key')
+    async getImage(@Param('key') key: string) {
+        return this.postAttachmentsService.getImage(key);
     }
 
     @UseGuards(AuthGuard('jwt'))
